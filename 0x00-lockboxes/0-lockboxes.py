@@ -5,10 +5,9 @@
 def canUnlockAll(boxes):
     """Checks if lockboxes in a list can be opened"""
     i = 0
-    try:
-        keys = list(set(boxes[0]) | {0})
-    except IndexError:
+    if len(boxes) <= 1:
         return True
+    keys = list(set(boxes[0]) | {0})
     added = True
     while added:
         added = False
