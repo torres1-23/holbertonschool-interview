@@ -4,24 +4,17 @@
 
 def canUnlockAll(boxes):
     """Checks if lockboxes in a list can be opened"""
-    i = 0
-    if len(boxes) <= 1:
+    n_boxes = set(range(0, len(boxes)))
+    keys = set(boxes[0])
+    opened_boxes = set({0})
+    while len(keys - opened_boxes) > 0:
+        box = (keys - opened_boxes).pop()
+        opened_boxes.add(box)
+        try:
+            keys.update(boxes[box])
+        except:
+            pass
+    if len(n_boxes - opened_boxes) == 0:
         return True
-    keys = list(set(boxes[0]) | {0})
-    added = True
-    while added:
-        added = False
-        for j in join(boxes, keys[i:]):
-            if j not in keys:
-                keys.append(j)
-                i += 1
-                added = True
-    return len(keys) == len(boxes)
-
-
-def join(boxes, keys):
-    """Return number of locboxes that can be opened"""
-    box = []
-    for key in keys:
-        box += boxes[key]
-    return box
+    else:
+        return False
