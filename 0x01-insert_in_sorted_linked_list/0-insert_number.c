@@ -3,7 +3,7 @@
 #include "lists.h"
 
 /**
- * insert_node - nserts a number into a sorted singly linked list.
+ * insert_node - inserts a number into a sorted singly linked list.
  * @head: pointer to head of list
  * @number: number to insert.
  * Return: new inserted node or NULL if failed.
